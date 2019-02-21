@@ -1,0 +1,11 @@
+[Unit]
+Description = Hue lamp controlling thermometer
+Wants=network-online.target
+After=network.target network-online.target
+
+[Service]
+Type = idle
+ExecStart=/usr/bin/python3 /opt/huetemperature/huetemperature.py > /var/log/temperature.log 2>&1
+
+[Install]
+WantedBy=multi-user.target
