@@ -16,7 +16,7 @@ import RPi.GPIO as IO
 import urllib.request
 import asyncio 
 import concurrent.futures 
-from settings import SENSOR_FILE_PATH, LAMP_URL
+from settings import SENSOR_FILE_PATH, LAMP_URL, TEMPERATURE_UPDATE_INTERVAL, LAMP_UPDATE_INTERVAL
 
 
 # One writer function writes and reader(s) read this global value.  
