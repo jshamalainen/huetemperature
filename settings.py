@@ -1,3 +1,7 @@
+import os.path 
+from posixpath import join as urljoin 
+from functools import reduce 
+
 # NOTE: When configuring the temperature update interval, 
 # remember to not read too often. Sensor does some 
 # processing and would heat up a slightly.  
@@ -24,5 +28,5 @@ try:
 except ImportError: 
     pass 
 
-LAMP_URL = HUE_GATEWAY_URL + "/api/" + HUE_API_KEY + "/lights/" + LIGHT_ID + "/state"
-SENSOR_FILE_PATH = ONEWIRE_ROOT_PATH + ONEWIRE_ADDRESS + "/w1_slave"
+LAMP_URL = reduce(urljoin, (HUE_GATEWAY_URL, "api", HUE_API_KEY, "lights", LIGHT_ID, "state"))
+SENSOR_FILE_PATH = os.path.join(ONEWIRE_ROOT_PATH, ONEWIRE_ADDRESS, "w1_slave")
